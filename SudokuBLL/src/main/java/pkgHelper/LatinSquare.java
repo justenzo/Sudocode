@@ -6,6 +6,7 @@ public class LatinSquare
 	private int[][] puzzle;
 	
 	
+	
 	//constructors 
 	public LatinSquare(int[][] twoDimArray)  
 	{
@@ -13,7 +14,40 @@ public class LatinSquare
 	}
 	
 	
+	
 	//methods
+	public int[][] getLatinSquare()
+	{
+		return this.puzzle;
+	}
+	
+	public void setLatinSquare(int[][] twoDimArr)
+	{
+		this.puzzle = twoDimArr;
+	}
+	
+	public int[] getColumn(int column)
+	{
+		int[] returnColumn = new int[this.puzzle.length];
+		
+		for (int i = 0; i < this.puzzle.length; i ++)
+		{
+			returnColumn[i] = this.puzzle[i][column];
+		}
+		return returnColumn;
+	}
+	
+	public int[] getRow(int row)
+	{
+		int[] returnRow = new int[this.puzzle.length];
+		
+		for (int i = 0; i < this.puzzle.length; i ++)
+		{
+			returnRow[i] = this.puzzle[row][i];
+		}
+		return returnRow;
+	}	
+	
 	public boolean containsZero() 
 	{
 		for(int iCol = 0; iCol < puzzle.length; iCol++)
@@ -39,38 +73,22 @@ public class LatinSquare
 		return false; 
 	}
 	
-	public int[] getColumn(int column)
-	{
-		int[] returnColumn = new int[this.puzzle.length];
-		
-		for (int i = 0; i < this.puzzle.length; i ++)
-		{
-			returnColumn[i] = this.puzzle[i][column];
-		}
-		return returnColumn;
-	}
-	
-	public int[][] getLatinSquare()
-	{
-		return this.puzzle;
-	}
-	
-	public int[] getRow(int row)
-	{
-		int[] returnRow = new int[this.puzzle.length];
-		
-		for (int i = 0; i < this.puzzle.length; i ++)
-		{
-			returnRow[i] = this.puzzle[row][i];
-		}
-		return returnRow;
-	}
-	
 	public boolean hasAllValues(int[] targetArr, int[] sourceArr)
 	{
-		for (int i = 0; i < sourceArr.length; i ++)
+		boolean valueFound = false; 
+		
+		for (int s = 0; s < sourceArr.length; s ++)
 		{
-			if (targetArr[i] != sourceArr[i])
+			valueFound = false; 
+			for (int t = 0; t < targetArr.length; t ++)
+			{
+				if (targetArr[t] == sourceArr[s])
+				{
+					valueFound = true;
+					t = targetArr.length - 1; 
+				}
+			}
+			if (valueFound == false)
 			{
 				return false; 
 			}
@@ -93,8 +111,19 @@ public class LatinSquare
 		return false; 
 	}
 	
-	public void setLatinSquare(int[][] twoDimArr)
+	public boolean isLatinSquare()
 	{
-		this.puzzle = twoDimArr;
+		for (int i = 0; i < this.puzzle.length; i ++) //iterates through each row 
+		{
+			if (hasDuplicates(getRow(i)) == true || hasDuplicates(getColumn(i)) == true) 
+			{
+				return false; 
+			}
+			/*if (hasAllValues(getRow(i+1), getRow(i)) == false || hasAllValues(getColumn(i+1), getColumn(i)) == false)
+			{
+				return false; 
+			}*/
+		}
+		return true; 
 	}
 }

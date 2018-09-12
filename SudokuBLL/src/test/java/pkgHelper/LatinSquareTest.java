@@ -12,12 +12,15 @@ public class LatinSquareTest
 	{
 		int twoDimArray[][] = { { 1, 2, 3 }, { 2, 3, 1 }, { 3, 1, 2} };
 		
-		int[] oneDim1 = { 2, 2, 3, };
-		int[] oneDim2 = { 1, 2, 3, };
+		int[] target = { 2, 1, 3, };
+		int[] source = { 1, 2, 3, };
 		
 		LatinSquare testSquare = new LatinSquare(twoDimArray);
 		
-		System.out.println(testSquare.hasDuplicates(oneDim1));
+		
+		System.out.println("hello" + testSquare.isLatinSquare());
+		//System.out.println(testSquare.hasAllValues(target, source));
+		
 		
 		//assertFalse(ls.containsZero());
 	}
