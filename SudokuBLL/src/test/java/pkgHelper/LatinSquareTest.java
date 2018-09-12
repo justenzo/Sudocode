@@ -18,11 +18,10 @@ public class LatinSquareTest
 		LatinSquare testSquare = new LatinSquare(twoDimArray);
 		
 		
-		System.out.println("hello" + testSquare.isLatinSquare());
+		System.out.println(testSquare.isLatinSquare());
 		//System.out.println(testSquare.hasAllValues(target, source));
 		
 		
 		//assertFalse(ls.containsZero());
 	}
-
 }

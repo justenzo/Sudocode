@@ -111,18 +111,22 @@ public class LatinSquare
 		return false; 
 	}
 	
-	public boolean isLatinSquare()
+	public boolean isLatinSquare() //github test comment
 	{
 		for (int i = 0; i < this.puzzle.length; i ++) //iterates through each row 
 		{
-			if (hasDuplicates(getRow(i)) == true || hasDuplicates(getColumn(i)) == true) 
-			{
-				return false; 
-			}
-			/*if (hasAllValues(getRow(i+1), getRow(i)) == false || hasAllValues(getColumn(i+1), getColumn(i)) == false)
+			/*if (hasDuplicates(getRow(i)) == true || hasDuplicates(getColumn(i)) == true) 
 			{
 				return false; 
 			}*/
+			
+			if (i < puzzle.length - 1)
+			{
+				if (hasAllValues(getRow(i+1), getRow(i)) == false || hasAllValues(getColumn(i+1), getColumn(i)) == false)
+				{
+					return false; 
+				}
+			}
 		}
 		return true; 
 	}
