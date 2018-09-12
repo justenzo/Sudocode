@@ -4,20 +4,22 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class LatinSquareTest {
+public class LatinSquareTest 
+{
 
 	@Test
-	public void test() {
-
-		int[][] myArray = { { 1, 2, 3, }, { 2, 3, 1 }, { 3, 1, 2 } };
+	public void test() 
+	{
+		int twoDimArray[][] = { { 1, 2, 3 }, { 2, 3, 1 }, { 3, 1, 2} };
 		
-		LatinSquare ls = new LatinSquare(myArray); 
+		int[] oneDim1 = { 2, 2, 3, };
+		int[] oneDim2 = { 1, 2, 3, };
 		
-		assertFalse(ls.containsZero());
+		LatinSquare testSquare = new LatinSquare(twoDimArray);
 		
+		System.out.println(testSquare.hasDuplicates(oneDim1));
 		
-		
-		
+		//assertFalse(ls.containsZero());
 	}
 
 }
