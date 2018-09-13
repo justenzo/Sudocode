@@ -10,18 +10,22 @@ public class LatinSquareTest
 	@Test
 	public void test() 
 	{
-		int twoDimArray[][] = { { 1, 2, 3 }, { 2, 3, 1 }, { 3, 1, 2} };
+		int goodSquare[][] = { { 1, 2, 3 }, { 2, 3, 1 }, { 3, 1, 2} };
+		int badSquare[][] = { { 1, 2, 2 }, { 2, 3, 1 }, { 3, 1, 2} };
 		
-		int[] target = { 2, 1, 3, };
-		int[] source = { 1, 2, 3, };
-		
-		LatinSquare testSquare = new LatinSquare(twoDimArray);
-		
-		
-		System.out.println(testSquare.isLatinSquare());
-		//System.out.println(testSquare.hasAllValues(target, source));
+		LatinSquare testGood = new LatinSquare(goodSquare);
+		LatinSquare testBad = new LatinSquare(badSquare);
 		
 		
-		//assertFalse(ls.containsZero());
+		//containsZero test cases
+		assertFalse(testGood.containsZero());
+		goodSquare[0][1] = 0; 
+		assertTrue(testGood.containsZero());
+		goodSquare[0][1] = 2; 
+		
+		
+		//assertFalse(testBad.containsZero());
+		
+		
 	}
 }
